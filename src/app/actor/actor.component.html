@@ -1,0 +1,9 @@
+
+<button (click)="ChangeCondition()">Toggle Me</button>
+  <div style="background-color: aqua; width: 20%" *ngIf="condition">
+    <h5>This is Section 1</h5>
+  </div>
+
+  <div style="background-color: chocolate;width: 20%" *ngIf="!condition">
+    <h5>This is Section 2</h5>
+  </div>
