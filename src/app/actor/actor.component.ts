@@ -17,6 +17,9 @@ export class ActorComponent implements OnInit {
 
   condition = true;
 
+  selectActorItem = null;
+  selectMovieItem = null;
+
   ngOnInit(): void {
 
     this.onGetActors();
@@ -26,7 +29,6 @@ export class ActorComponent implements OnInit {
   ChangeCondition() {
     this.condition = !this.condition;
   }
-
 
   onGetActors() {
     this.db.getActors().subscribe((data: any[]) => {
@@ -38,6 +40,7 @@ export class ActorComponent implements OnInit {
     let obj = { name: this.fullName, bYear: this.bYear };
     this.db.addActor(obj).subscribe(data => {
       this.onGetActors();
+      this.changeSection(1);
     });
 
   }
@@ -52,6 +55,11 @@ export class ActorComponent implements OnInit {
     else return "btn-danger";
   }
 
-
+  selectActor(actor) {
+    this.selectActorItem = actor;
+  }
+  selectMovie(movie) {
+    this.selectMovieItem = movie;
+  }
 
 }
